@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2057" systemVersion="12C60" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ActivitiesSummary" syncable="YES">
+        <attribute name="activeScore" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="activityCalories" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="caloriesOut" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="distances" optional="YES" attributeType="Transformable" valueTransformerName="OHDictionaryTransformer" syncable="YES"/>
+        <attribute name="fairlyActiveMinutes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lightlyActiveMinutes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="marginalCalories" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sedentaryMinutes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="steps" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="veryActiveMinutes" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="activityRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Activity" inverseName="activitySummary" inverseEntity="Activity" syncable="YES"/>
+    </entity>
+    <entity name="Activity" syncable="YES">
+        <attribute name="calories" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="steps" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="activitySummary" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="ActivitiesSummary" inverseName="activityRecords" inverseEntity="ActivitiesSummary" syncable="YES"/>
+    </entity>
+    <entity name="Sleep" syncable="YES">
+        <attribute name="awakeningsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="efficiency" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="isMainSleep" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="minutesAfterWakeup" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesAsleep" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesAwake" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesToFallAsleep" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timeInBed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="sleepSummary" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="SleepSummary" inverseName="sleepRecords" inverseEntity="SleepSummary" syncable="YES"/>
+    </entity>
+    <entity name="SleepSummary" syncable="YES">
+        <attribute name="totalMinutesAsleep" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalSleepRecords" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="totalTimeInBed" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="sleepRecords" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Sleep" inverseName="sleepSummary" inverseEntity="Sleep" syncable="YES"/>
+    </entity>
+    <entity name="Weight" syncable="YES">
+        <attribute name="bmi" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="remoteID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Weight" positionX="351" positionY="-186" width="128" height="105"/>
+        <element name="Activity" positionX="511" positionY="68" width="128" height="148"/>
+        <element name="Sleep" positionX="513" positionY="252" width="128" height="225"/>
+        <element name="SleepSummary" positionX="349" positionY="216" width="128" height="105"/>
+        <element name="ActivitiesSummary" positionX="351" positionY="-18" width="128" height="208"/>
+    </elements>
+</model>
